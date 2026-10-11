@@ -1,0 +1,12 @@
+Reading={'temperature': 92, 'pressure': 1, 'vibration': 2, 'current': 19} | Rule=HIGH_TEMP | Action=STOP_MACHINE
+Reading={'temperature': 92, 'pressure': 10, 'vibration': 1, 'current': 10} | Rule=HIGH_TEMP | Action=STOP_MACHINE
+Reading: {'temperature': 51.05, 'pressure': 6.48, 'vibration': 3.55, 'current': 10.02} | Rule: NO_RULE_FIRED | Action: CONTINUE_NORMAL
+Reading: {'temperature': 85.73, 'pressure': 5.62, 'vibration': 4.45, 'current': 12.91} | Rule: HIGH_TEMP | Action: STOP_MACHINE
+Reading: {'temperature': 60.66, 'pressure': 6.29, 'vibration': 3.7, 'current': 10.38} | Rule: NO_RULE_FIRED | Action: CONTINUE_NORMAL
+Reading: {'temperature': 70.59, 'pressure': 5.58, 'vibration': 8.01, 'current': 16.24} | Rule: HIGH_VIBRATION | Action: INSPECT_MACHINE
+Reading: {'temperature': 68.22, 'pressure': 9.62, 'vibration': 9.88, 'current': 12.0} | Rule: HIGH_VIBRATION | Action: INSPECT_MACHINE
+Reading: {'temperature': 72.79, 'pressure': 6.66, 'vibration': 5.9, 'current': 9.47} | Rule: NO_RULE_FIRED | Action: CONTINUE_NORMAL
+Reading: {'temperature': 87.03, 'pressure': 7.14, 'vibration': 5.76, 'current': 9.9} | Rule: HIGH_TEMP | Action: STOP_MACHINE
+Reading: {'temperature': 85.03, 'pressure': 5.99, 'vibration': 2.89, 'current': 11.1} | Rule: HIGH_TEMP | Action: STOP_MACHINE
+Reading: {'temperature': 62.61, 'pressure': 5.4, 'vibration': 7.62, 'current': 3.36} | Rule: HIGH_VIBRATION | Action: INSPECT_MACHINE
+Reading: {'temperature': 94.1, 'pressure': 6.53, 'vibration': 8.84, 'current': 18.82} | Rule: HIGH_TEMP | Action: STOP_MACHINE

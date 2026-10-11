@@ -1,0 +1,66 @@
+========================================================================
+COMPLETE SYSTEM AUTOMATION PROJECT
+DAY 1 + DAY 2
+========================================================================
+
+Combined log file: C:\Users\pl\System-Automation_psg\DAY_2\DATA\DATA\day1_day2_log.txt
+
+========================================================================
+DAY 1 - RULE-BASED SYSTEM AUTOMATION
+========================================================================
+
+[Tick 01] SENSE -> {'temperature': 64, 'pressure': 5, 'vibration': 10, 'current': 5}
+           THINK -> HIGH_VIBRATION
+           ACT   -> High vibration detected. Inspect the machine!
+           LOG   -> Reading: {'temperature': 64, 'pressure': 5, 'vibration': 10, 'current': 5} | Rule: HIGH_VIBRATION | Action: INSPECT_MACHINE
+
+[Tick 02] SENSE -> {'temperature': 74, 'pressure': 9, 'vibration': 1, 'current': 4}
+           THINK -> HIGH_PRESSURE
+           ACT   -> High pressure detected. Reduce the pressure!
+           LOG   -> Reading: {'temperature': 74, 'pressure': 9, 'vibration': 1, 'current': 4} | Rule: HIGH_PRESSURE | Action: REDUCE_PRESSURE
+
+[Tick 03] SENSE -> {'temperature': 71, 'pressure': 4, 'vibration': 7, 'current': 18}
+           THINK -> HIGH_CURRENT
+           ACT   -> High current detected. Check the motor!
+           LOG   -> Reading: {'temperature': 71, 'pressure': 4, 'vibration': 7, 'current': 18} | Rule: HIGH_CURRENT | Action: CHECK_MOTOR
+
+[Tick 04] SENSE -> {'temperature': 71, 'pressure': 8, 'vibration': 2, 'current': 10}
+           THINK -> NO_RULE_FIRED
+           ACT   -> All parameters normal. Machine continues running.
+           LOG   -> Reading: {'temperature': 71, 'pressure': 8, 'vibration': 2, 'current': 10} | Rule: NO_RULE_FIRED | Action: CONTINUE_NORMAL
+
+[Tick 05] SENSE -> {'temperature': 60, 'pressure': 7, 'vibration': 2, 'current': 17}
+           THINK -> HIGH_CURRENT
+           ACT   -> High current detected. Check the motor!
+           LOG   -> Reading: {'temperature': 60, 'pressure': 7, 'vibration': 2, 'current': 17} | Rule: HIGH_CURRENT | Action: CHECK_MOTOR
+
+[Tick 06] SENSE -> {'temperature': 56, 'pressure': 7, 'vibration': 4, 'current': 7}
+           THINK -> NO_RULE_FIRED
+           ACT   -> All parameters normal. Machine continues running.
+           LOG   -> Reading: {'temperature': 56, 'pressure': 7, 'vibration': 4, 'current': 7} | Rule: NO_RULE_FIRED | Action: CONTINUE_NORMAL
+
+[Tick 07] SENSE -> {'temperature': 75, 'pressure': 10, 'vibration': 7, 'current': 5}
+           THINK -> HIGH_PRESSURE
+           ACT   -> High pressure detected. Reduce the pressure!
+           LOG   -> Reading: {'temperature': 75, 'pressure': 10, 'vibration': 7, 'current': 5} | Rule: HIGH_PRESSURE | Action: REDUCE_PRESSURE
+
+[Tick 08] SENSE -> {'temperature': 55, 'pressure': 5, 'vibration': 0, 'current': 3}
+           THINK -> NO_RULE_FIRED
+           ACT   -> All parameters normal. Machine continues running.
+           LOG   -> Reading: {'temperature': 55, 'pressure': 5, 'vibration': 0, 'current': 3} | Rule: NO_RULE_FIRED | Action: CONTINUE_NORMAL
+
+[Tick 09] SENSE -> {'temperature': 54, 'pressure': 5, 'vibration': 2, 'current': 2}
+           THINK -> NO_RULE_FIRED
+           ACT   -> All parameters normal. Machine continues running.
+           LOG   -> Reading: {'temperature': 54, 'pressure': 5, 'vibration': 2, 'current': 2} | Rule: NO_RULE_FIRED | Action: CONTINUE_NORMAL
+
+[Tick 10] SENSE -> {'temperature': 57, 'pressure': 8, 'vibration': 5, 'current': 14}
+           THINK -> NO_RULE_FIRED
+           ACT   -> All parameters normal. Machine continues running.
+           LOG   -> Reading: {'temperature': 57, 'pressure': 8, 'vibration': 5, 'current': 14} | Rule: NO_RULE_FIRED | Action: CONTINUE_NORMAL
+
+Day 1 automation completed: 10 cycles.
+
+========================================================================
+DAY 2 - MACHINE LEARNING
+========================================================================

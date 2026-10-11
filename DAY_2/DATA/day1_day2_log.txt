@@ -1,0 +1,178 @@
+========================================================================
+COMPLETE SYSTEM AUTOMATION PROJECT
+DAY 1 + DAY 2
+========================================================================
+
+Combined log file: C:\Users\pl\System-Automation_psg\DAY_2\DATA\day1_day2_log.txt
+
+========================================================================
+DAY 1 - RULE-BASED SYSTEM AUTOMATION
+========================================================================
+
+[Tick 01] SENSE -> {'temperature': 51, 'pressure': 5, 'vibration': 4, 'current': 10}
+           THINK -> NO_RULE_FIRED
+           ACT   -> All parameters normal. Machine continues running.
+           LOG   -> Reading: {'temperature': 51, 'pressure': 5, 'vibration': 4, 'current': 10} | Rule: NO_RULE_FIRED | Action: CONTINUE_NORMAL
+
+[Tick 02] SENSE -> {'temperature': 79, 'pressure': 10, 'vibration': 3, 'current': 14}
+           THINK -> HIGH_PRESSURE
+           ACT   -> High pressure detected. Reduce the pressure!
+           LOG   -> Reading: {'temperature': 79, 'pressure': 10, 'vibration': 3, 'current': 14} | Rule: HIGH_PRESSURE | Action: REDUCE_PRESSURE
+
+[Tick 03] SENSE -> {'temperature': 66, 'pressure': 10, 'vibration': 10, 'current': 12}
+           THINK -> HIGH_VIBRATION
+           ACT   -> High vibration detected. Inspect the machine!
+           LOG   -> Reading: {'temperature': 66, 'pressure': 10, 'vibration': 10, 'current': 12} | Rule: HIGH_VIBRATION | Action: INSPECT_MACHINE
+
+[Tick 04] SENSE -> {'temperature': 72, 'pressure': 6, 'vibration': 6, 'current': 8}
+           THINK -> NO_RULE_FIRED
+           ACT   -> All parameters normal. Machine continues running.
+           LOG   -> Reading: {'temperature': 72, 'pressure': 6, 'vibration': 6, 'current': 8} | Rule: NO_RULE_FIRED | Action: CONTINUE_NORMAL
+
+[Tick 05] SENSE -> {'temperature': 66, 'pressure': 9, 'vibration': 7, 'current': 10}
+           THINK -> HIGH_PRESSURE
+           ACT   -> High pressure detected. Reduce the pressure!
+           LOG   -> Reading: {'temperature': 66, 'pressure': 9, 'vibration': 7, 'current': 10} | Rule: HIGH_PRESSURE | Action: REDUCE_PRESSURE
+
+[Tick 06] SENSE -> {'temperature': 73, 'pressure': 1, 'vibration': 0, 'current': 19}
+           THINK -> HIGH_CURRENT
+           ACT   -> High current detected. Check the motor!
+           LOG   -> Reading: {'temperature': 73, 'pressure': 1, 'vibration': 0, 'current': 19} | Rule: HIGH_CURRENT | Action: CHECK_MOTOR
+
+[Tick 07] SENSE -> {'temperature': 58, 'pressure': 6, 'vibration': 6, 'current': 7}
+           THINK -> NO_RULE_FIRED
+           ACT   -> All parameters normal. Machine continues running.
+           LOG   -> Reading: {'temperature': 58, 'pressure': 6, 'vibration': 6, 'current': 7} | Rule: NO_RULE_FIRED | Action: CONTINUE_NORMAL
+
+[Tick 08] SENSE -> {'temperature': 73, 'pressure': 2, 'vibration': 8, 'current': 19}
+           THINK -> HIGH_VIBRATION
+           ACT   -> High vibration detected. Inspect the machine!
+           LOG   -> Reading: {'temperature': 73, 'pressure': 2, 'vibration': 8, 'current': 19} | Rule: HIGH_VIBRATION | Action: INSPECT_MACHINE
+
+[Tick 09] SENSE -> {'temperature': 84, 'pressure': 5, 'vibration': 6, 'current': 18}
+           THINK -> HIGH_TEMP
+           ACT   -> Machine stopped due to high temperature!
+           LOG   -> Reading: {'temperature': 84, 'pressure': 5, 'vibration': 6, 'current': 18} | Rule: HIGH_TEMP | Action: STOP_MACHINE
+
+[Tick 10] SENSE -> {'temperature': 73, 'pressure': 2, 'vibration': 7, 'current': 11}
+           THINK -> NO_RULE_FIRED
+           ACT   -> All parameters normal. Machine continues running.
+           LOG   -> Reading: {'temperature': 73, 'pressure': 2, 'vibration': 7, 'current': 11} | Rule: NO_RULE_FIRED | Action: CONTINUE_NORMAL
+
+Day 1 automation completed: 10 cycles.
+
+========================================================================
+DAY 2 - MACHINE LEARNING
+========================================================================
+
+STEP 7 - LOAD DATASET
+Dataset location: C:\Users\pl\System-Automation_psg\DAY_2\DATA\day2_sample.csv
+Number of rows: 250
+Number of columns: 6
+Columns: ['temperature', 'pressure', 'vibration', 'current', 'rpm', 'state']
+
+First five dataset records:
+ temperature  pressure  vibration  current  rpm       state
+       69.28      4.69       2.94    11.88 1644      NORMAL
+       55.68      5.89       2.18    13.21 1684      NORMAL
+       80.21      5.80       1.79    13.94 2180 OVERHEATING
+       69.17      5.54       3.35    10.24 2106      NORMAL
+       58.35      5.08       3.37    15.37 2038      NORMAL
+
+STEP 8 - SELECT FEATURES AND MACHINE STATE
+Input features: ['temperature', 'pressure', 'vibration', 'current', 'rpm']
+Target column: state
+
+Available machine states:
+state
+NORMAL            155
+MOTOR_OVERLOAD     28
+OVERHEATING        25
+LOW_PRESSURE       23
+HIGH_VIBRATION     19
+
+STEP 9 - SPLIT TRAINING AND TESTING DATA
+Training records: 200
+Testing records: 50
+
+STEP 10 - TRAIN RANDOM FOREST MODEL
+Model training completed successfully.
+
+STEP 11 - EVALUATE MODEL
+Accuracy: 100.00%
+
+Classification report:
+                precision    recall  f1-score   support
+
+HIGH_VIBRATION       1.00      1.00      1.00         4
+  LOW_PRESSURE       1.00      1.00      1.00         5
+MOTOR_OVERLOAD       1.00      1.00      1.00         5
+        NORMAL       1.00      1.00      1.00        31
+   OVERHEATING       1.00      1.00      1.00         5
+
+      accuracy                           1.00        50
+     macro avg       1.00      1.00      1.00        50
+  weighted avg       1.00      1.00      1.00        50
+
+Confusion matrix:
+[[ 4  0  0  0  0]
+ [ 0  5  0  0  0]
+ [ 0  0  5  0  0]
+ [ 0  0  0 31  0]
+ [ 0  0  0  0  5]]
+Class order: ['HIGH_VIBRATION', 'LOW_PRESSURE', 'MOTOR_OVERLOAD', 'NORMAL', 'OVERHEATING']
+
+STEP 12 - SAVE TRAINED MODEL
+Model saved successfully: C:\Users\pl\System-Automation_psg\DAY_2\DATA\machine_state_model.pkl
+
+========================================================================
+STEP 13 - VIEW TRAINED MODEL
+========================================================================
+Model type: RandomForestClassifier
+Number of trees: 200
+Input features: ['temperature', 'pressure', 'vibration', 'current', 'rpm']
+Predicted classes: ['HIGH_VIBRATION', 'LOW_PRESSURE', 'MOTOR_OVERLOAD', 'NORMAL', 'OVERHEATING']
+
+Feature importance:
+current: 0.2551
+pressure: 0.2546
+vibration: 0.2314
+temperature: 0.2234
+rpm: 0.0355
+
+Example split rules from the first decision tree:
+Node 0: vibration <= 4.600
+Node 1: pressure <= 3.725
+Node 2: leaf node
+Node 3: rpm <= 1726.000
+Node 4: current <= 17.145
+Node 5: vibration <= 3.030
+Node 6: leaf node
+Node 7: pressure <= 4.690
+Node 8: current <= 13.240
+Node 9: pressure <= 4.285
+
+========================================================================
+STEP 14 - PREDICT MACHINE STATE
+========================================================================
+
+New machine sensor readings:
+temperature: 80.0
+pressure: 5.0
+vibration: 2.0
+current: 10.0
+rpm: 1700
+
+Predicted machine state: OVERHEATING
+
+Prediction probabilities:
+HIGH_VIBRATION: 0.50%
+LOW_PRESSURE: 0.00%
+MOTOR_OVERLOAD: 1.00%
+NORMAL: 6.50%
+OVERHEATING: 92.00%
+
+========================================================================
+ALL DAY 1 AND DAY 2 STEPS COMPLETED
+Complete output saved to: C:\Users\pl\System-Automation_psg\DAY_2\DATA\day1_day2_log.txt
+========================================================================

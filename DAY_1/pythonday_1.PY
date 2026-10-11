@@ -8,10 +8,10 @@ LOG_FILE = "day1_log.txt"
 def generate_sensor_data():
     """Generate random sensor readings."""
     return {
-        "temperature": round(random.uniform(50, 95), 2),
-        "pressure": round(random.uniform(1, 10), 2),
-        "vibration": round(random.uniform(0, 10), 2),
-        "current": round(random.uniform(2, 20), 2)
+        "temperature": round(random.randint(50, 95)),
+        "pressure": round(random.randint(1, 10), 2),
+        "vibration": round(random.randint(0, 10), 2),
+        "current": round(random.randint(2, 20), 2)
     }
 
 
@@ -58,17 +58,22 @@ def evaluate_rules(reading, rules):
 
 # STEP 4 — Trigger an action
 def take_action(action):
-    """Return a message describing the action."""
-    actions = {
-        "STOP_MACHINE": "Machine stopped due to high temperature!",
-        "INSPECT_MACHINE": "High vibration detected. Inspect the machine.",
-        "REDUCE_PRESSURE": "High pressure detected. Reduce the pressure.",
-        "CHECK_MOTOR": "High current detected. Check the motor.",
-        "CONTINUE_NORMAL": "All parameters normal. Machine continues running."
-    }
+    """Return a message describing what happens for an action."""
 
-    return actions.get(action, f"Unknown action: {action}")
+    if action == "STOP_MACHINE":
+        return "Machine stopped due to high temperature!"
 
+    elif action == "REDUCE_PRESSURE":
+        return "High pressure detected. Reduce the pressure!"
+
+    elif action == "INSPECT_MACHINE":
+        return "High vibration detected. Inspect the machine!"
+
+    elif action == "CONTINUE_NORMAL":
+        return "All parameters normal. Machine continues running."
+
+    else:
+        return f"No handler available for action: {action}"
 
 # STEP 5 — Log every decision
 def log_decision(reading, rule_name, action):
@@ -79,6 +84,7 @@ def log_decision(reading, rule_name, action):
             f"Rule: {rule_name} | "
             f"Action: {action}\n"
         )
+        
 
 
 # MAIN PROGRAM
