@@ -1,0 +1,92 @@
+===========================================================================
+     ROBOTIC ARM JOINT HEALTH MONITORING SYSTEM - SIMULATION RUN     
+         23IF02 System Automation | Bonus Challenge Submission        
+===========================================================================
+Log destination: simulation_output.log
+
+[OK] Loaded predictive machine learning model (RandomForestClassifier)
+
+
+###########################################################################
+TEST CASE 1: SCENARIO 1: Healthy Arm under Nominal Production
+###########################################################################
+----------------------------------------------------------------------
+ARM: ARM_06 | FINAL DECISION: >>> SAFE <<<
+----------------------------------------------------------------------
+  Deterministic Safety Stop : False (Passed)
+  Spoofed Sensor Attack     : False (No spoofing)
+  ML Wear Model Prediction  : NORMAL {'MODERATE_WEAR': 0.0, 'NORMAL': 1.0, 'SEVERE_WEAR': 0.0}
+  Maintenance Log Signal    : CLEAN_NOTE
+  Technician Notes Found    :
+    - 2026-10-13 08:12:10 | ARM_06 | All joints running smoothly. Thermal scan confirms normal baseline operating temperatures.
+  Decision Rationale        : All joint parameters nominal, ML model predicts NORMAL wear, and technician logs are clean.
+----------------------------------------------------------------------
+
+###########################################################################
+TEST CASE 2: SCENARIO 2: Early Warning / Observation (Technician Notice)
+###########################################################################
+----------------------------------------------------------------------
+ARM: ARM_02 | FINAL DECISION: >>> MONITOR <<<
+----------------------------------------------------------------------
+  Deterministic Safety Stop : False (Passed)
+  Spoofed Sensor Attack     : False (No spoofing)
+  ML Wear Model Prediction  : NORMAL {'MODERATE_WEAR': 0.0, 'NORMAL': 1.0, 'SEVERE_WEAR': 0.0}
+  Maintenance Log Signal    : WARNING_NOTE
+  Technician Notes Found    :
+    - 2026-10-11 09:05:00 | ARM_02 | Minor rhythmic clicking sound detected on elbow joint under 4kg payload. Grease level low.
+    - 2026-10-15 17:00:10 | ARM_02 | Replaced barcode scanner cable tie. Operator reported no functional anomalies.
+  Decision Rationale        : Technician logged minor warning note (clicking/warmth)
+----------------------------------------------------------------------
+
+###########################################################################
+TEST CASE 3: SCENARIO 3: Severe Mechanical Wear & Critical Grinding Notes
+###########################################################################
+----------------------------------------------------------------------
+ARM: ARM_03 | FINAL DECISION: >>> SCHEDULE_MAINTENANCE <<<
+----------------------------------------------------------------------
+  Deterministic Safety Stop : False (Passed)
+  Spoofed Sensor Attack     : False (No spoofing)
+  ML Wear Model Prediction  : SEVERE_WEAR {'MODERATE_WEAR': 0.0, 'NORMAL': 0.0, 'SEVERE_WEAR': 1.0}
+  Maintenance Log Signal    : CRITICAL_NOTE
+  Technician Notes Found    :
+    - 2026-10-10 11:15:42 | ARM_03 | Technician noticed audible metallic grinding noise coming from shoulder bearing during rapid traverse.
+    - 2026-10-14 09:30:45 | ARM_03 | Visible metal shavings found on shoulder joint mounting flange. Immediate overhaul recommended.
+  Decision Rationale        : ML model predicts SEVERE_WEAR & Technician log reported critical mechanical damage (grinding/odor/backlash)
+----------------------------------------------------------------------
+
+###########################################################################
+TEST CASE 4: SCENARIO 4: Extreme Thermal/Mechanical Hazard (Instant Safety Stop)
+###########################################################################
+----------------------------------------------------------------------
+ARM: ARM_01 | FINAL DECISION: >>> EMERGENCY_STOP <<<
+----------------------------------------------------------------------
+  Deterministic Safety Stop : True (CRITICAL TEMPERATURE: SHOULDER temperature is 88.5°C (Exceeds limit of 80.0°C))
+  Spoofed Sensor Attack     : False (No spoofing)
+  ML Wear Model Prediction  : UNKNOWN 
+  Maintenance Log Signal    : CLEAN_NOTE
+  Decision Rationale        : Deterministic Safety Rule Tripped: CRITICAL TEMPERATURE: SHOULDER temperature is 88.5°C (Exceeds limit of 80.0°C)
+----------------------------------------------------------------------
+
+###########################################################################
+TEST CASE 5: SCENARIO 5: Spoofed-Sensor Attack Defense in Action
+###########################################################################
+----------------------------------------------------------------------
+ARM: ARM_05 | FINAL DECISION: >>> SCHEDULE_MAINTENANCE <<<
+----------------------------------------------------------------------
+  Deterministic Safety Stop : False (Passed)
+  Spoofed Sensor Attack     : True (SPOOF ATTACK DETECTED on SHOULDER! Reported torque is 11.5 Nm (abnormally low/masked) despite severe distress (Temp: 75.0°C, Vib: 6.80 mm/s). Physical correlation violation!)
+  ML Wear Model Prediction  : SEVERE_WEAR {'MODERATE_WEAR': 0.16, 'NORMAL': 0.0, 'SEVERE_WEAR': 0.84}
+  Maintenance Log Signal    : CRITICAL_NOTE
+  Technician Notes Found    :
+    - 2026-10-12 16:45:30 | ARM_05 | Excessive backlash and jerky articulation observed on elbow joint. Needs mechanical alignment check.
+  Decision Rationale        : Security Defense Alert: SPOOF ATTACK DETECTED on SHOULDER! Reported torque is 11.5 Nm (abnormally low/masked) despite severe distress (Temp: 75.0°C, Vib: 6.80 mm/s). Physical correlation violation! Requires immediate sensor inspection and calibration.
+----------------------------------------------------------------------
+
+===========================================================================
+                     SIMULATION VERIFICATION SUMMARY                  
+===========================================================================
+Total test cases executed    : 5
+Unique decisions reached     : ['EMERGENCY_STOP', 'MONITOR', 'SAFE', 'SCHEDULE_MAINTENANCE']
+All 4 mandatory outcomes met : True
+
+>>> ALL ASSIGNMENT REQUIREMENTS VERIFIED AND REACHABLE SUCCESSFULLY! <<<
